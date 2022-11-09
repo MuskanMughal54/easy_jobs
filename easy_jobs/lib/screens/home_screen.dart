@@ -30,15 +30,11 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Navigator.pop(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SplashScreen()));
+                            Navigator.pushReplacementNamed(context, '/login');
                           },
                           color: Colors.white,
                           iconSize: 30,
-                          icon: const Icon(
-                              CupertinoIcons.line_horizontal_3_decrease)),
+                          icon: const Icon(CupertinoIcons.line_horizontal_3_decrease)),
                       avatar(context),
                     ],
                   )),
@@ -51,30 +47,21 @@ class HomeScreen extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: 20, top: 10),
                       child: Text(
                         "Find the World\s most Amazing Jobs",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600),
+                        style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w600),
                       ),
                     ),
                     searchForJobs(size),
                     const SizedBox(height: 15),
                     const Text(
                       "Jobs Matched",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600),
+                      style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 10),
                     jobMatched(context, size),
                     const SizedBox(height: 10),
                     const Text(
                       "Jobs Categories",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600),
+                      style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 10),
                     jobCategory(),
@@ -92,8 +79,7 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(30)),
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ProfileScreen()));
+          Navigator.pushReplacementNamed(context, '/profile');
         },
         child: CircleAvatar(
           radius: 25,
@@ -165,15 +151,13 @@ jobMatched(BuildContext context, Size size) {
                     company: 'Master Card',
                     description:
                         "We're team of youthful, intelligent and dedicated creatives who have an unrivaled energy and passion for crafting beautiful and meaningful products. We strive to follow al UX processes of ideation, research and MVP for our product designs to enable output that is both aesthetic and strategic.",
-                    responsibilty:
-                        'Keep the interface beautiful and ease to use.',
+                    responsibilty: 'Keep the interface beautiful and ease to use.',
                     info: '1600 Amphitheatre Parkway, Mountain View',
                   )));
     },
     child: Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: kGreenColor),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: kGreenColor),
       child: Padding(
           padding: EdgeInsets.only(
             top: 10,
@@ -196,12 +180,8 @@ jobMatched(BuildContext context, Size size) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    //MainAxisAlignment.start,
                     "Sr. Flutter Developer",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ],
               ),
@@ -225,19 +205,13 @@ jobMatched(BuildContext context, Size size) {
                   Text(
                     //MainAxisAlignment.start,
                     "Be in the first",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
                   ),
                   SizedBox(width: 2),
                   Text(
                     //MainAxisAlignment.start,
                     "86 applicats",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ],
               ),
@@ -251,28 +225,19 @@ jobMatched(BuildContext context, Size size) {
                     children: [
                       employees(imageUrl: "assets/images/employee1.jpg"),
                       Container(
-                        child:
-                            employees(imageUrl: "assets/images/employee2.jpg"),
+                        child: employees(imageUrl: "assets/images/employee2.jpg"),
                         margin: const EdgeInsets.only(left: 35),
                       ),
                       Container(
-                        //child: employees(text: "86"),
-                        child:
-                            employees(imageUrl: "assets/images/employee3.jpg"),
+                        child: employees(imageUrl: "assets/images/employee3.jpg"),
                         margin: const EdgeInsets.only(left: 70),
                       ),
-                      // Container(
-                      //   child: employees(text: "88+"),
-                      //   margin: const EdgeInsets.only(left: 100),
-                      // ),
                     ],
                   ),
-                  const Text("6 Hours Ago",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                  const Text("6 Hours Ago", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           )),
     ),
@@ -304,13 +269,12 @@ employees({imageUrl = "", text}) {
 
 features(text) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
     ),
-    child:
-        Text(text, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+    child: Text(text, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
   );
 }
 
@@ -324,12 +288,7 @@ searchForJobs(Size size) {
     ),
     child: Row(
       children: [
-        IconButton(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            onPressed: () {},
-            color: Colors.white,
-            iconSize: 28,
-            icon: const Icon(CupertinoIcons.search)),
+        IconButton(padding: const EdgeInsets.only(left: 20, right: 20), onPressed: () {}, color: Colors.white, iconSize: 28, icon: const Icon(CupertinoIcons.search)),
         Expanded(
             child: SizedBox(
           child: TextFormField(

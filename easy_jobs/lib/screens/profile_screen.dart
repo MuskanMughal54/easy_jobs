@@ -1,9 +1,11 @@
 import 'package:easy_jobs/constants.dart';
+import 'package:easy_jobs/global_state.dart';
 import 'package:easy_jobs/widgets/app_feature.dart';
 import 'package:easy_jobs/widgets/custom_statistics.dart';
 import 'package:easy_jobs/widgets/icons_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final state = Provider.of<GlobalState>(context);
     return Scaffold(
       backgroundColor: kPrimaryLightColor,
       body: SingleChildScrollView(
@@ -21,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20, left: 20),
               child: IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(context, '/');
                 },
                 icon: const Icon(CupertinoIcons.arrow_left),
                 iconSize: 30,
@@ -31,43 +34,34 @@ class ProfileScreen extends StatelessWidget {
             profileImg(),
             Container(
               width: size.width,
-              decoration: const BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30))),
+              decoration: const BoxDecoration(color: kPrimaryColor, borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))),
               child: Column(
                 children: [
                   const SizedBox(height: 10),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 30, left: 30, right: 30),
+                    padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "Sarah\n Sr. Flutter Developer",
+                        Text(
+                          "${state.name}\n Sr. Flutter Developer",
                           textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1,
-                              color: Colors.white),
+                          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, letterSpacing: 1, color: Colors.white),
                         ),
                         const SizedBox(height: 20),
                         jobSearchStatus(),
-                        SizedBox(height: 40),
+                        const SizedBox(height: 40),
                         statistics(),
                       ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: size.height * 0.09),
-                    child: AppFeature(
+                    child: const AppFeature(
                         title: "Complete Profile",
                         subTitle: "Personal | Job Experience | Certificaton",
                         color: kGreenColor,
-                        component: const IconBox(
+                        component: IconBox(
                           icon: Icons.edit,
                           height: 35,
                           width: 35,

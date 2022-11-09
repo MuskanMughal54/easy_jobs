@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_jobs/constants.dart';
-import 'package:easy_jobs/screens/home_screen.dart';
-import 'package:easy_jobs/screens/registerationScreen.dart';
+import 'package:easy_jobs/global_state.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 import '../utils.dart';
 
@@ -17,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
+  final fireStore = FirebaseFirestore.instance;
 
   bool isLoading = false;
 
@@ -24,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordTextEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final state = Provider.of<GlobalState>(context);
     return Scaffold(
       backgroundColor: kPrimaryLightColor,
       body: SingleChildScrollView(
@@ -111,7 +114,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                   isLoading = true;
                                 });
                                 _auth.signInWithEmailAndPassword(email: emailTextEditingController.text, password: passwordTextEditingController.text).then((value) {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                                  // getting details from firestore
+                                  fireStore.collection('users').doc(value.user!.uid).get().then((snapshot) {
+                                    String name = snapshot.data()?['name'];
+                                    state.setName(name);
+                                    Navigator.pushReplacementNamed(context, '/');
+                                  });
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                 }).onError((FirebaseAuthException err, trace) {
                                   addToast(context: context, message: err.message.toString(), type: 'error');
                                   setState(() {
@@ -144,11 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterationScreen(),
-                        ));
+                    Navigator.pushReplacementNamed(context, '/register');
                   },
                   child: const Text(
                     "Don't have an account? Sign up",

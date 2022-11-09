@@ -1,9 +1,5 @@
 import 'package:easy_jobs/constants.dart';
-import 'package:easy_jobs/screens/home_screen.dart';
-import 'package:easy_jobs/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SplashScreen extends StatelessWidget {
   static const String idScreen = "splash";
@@ -14,7 +10,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryLightColor,
       body: Container(
-        padding: EdgeInsets.only(top: 80),
+        padding: const EdgeInsets.only(top: 80),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -23,10 +19,10 @@ class SplashScreen extends StatelessWidget {
               'assets/images/img1.png',
               scale: 1.1,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               "Job Hunting",
               style: TextStyle(
                 fontSize: 36,
@@ -35,7 +31,7 @@ class SplashScreen extends StatelessWidget {
                 //color: Color(0xff03004),
               ),
             ),
-            Text(
+            const Text(
               "made easy",
               style: TextStyle(
                 fontSize: 36.0,
@@ -44,21 +40,19 @@ class SplashScreen extends StatelessWidget {
                 //color: Color(0xff5f5fff)
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => LoginScreen())));
+                Navigator.pushReplacementNamed(context, '/login');
               },
               elevation: 10.0,
               minWidth: 170.0,
               height: 50.0,
               color: Colors.blue,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0)),
-              child: Text(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+              child: const Text(
                 "Get Started",
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),

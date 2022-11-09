@@ -1,24 +1,11 @@
-import 'dart:ui';
-
 import 'package:easy_jobs/constants.dart';
 import 'package:easy_jobs/widgets/app_feature.dart';
 import 'package:easy_jobs/widgets/icons_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import 'package:flutter/material.dart';
 
 class JobDetailScreen extends StatelessWidget {
-  const JobDetailScreen(
-      {Key? key,
-      required this.jobTitle,
-      required this.description,
-      required this.company,
-      required this.info,
-      required this.responsibilty})
-      : super(key: key);
+  const JobDetailScreen({Key? key, required this.jobTitle, required this.description, required this.company, required this.info, required this.responsibilty}) : super(key: key);
 
   final String jobTitle;
   final String description;
@@ -40,9 +27,7 @@ class JobDetailScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
               child: Container(
                 width: size.width,
-                decoration: BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: BorderRadius.circular(30)),
+                decoration: BoxDecoration(color: kPrimaryColor, borderRadius: BorderRadius.circular(30)),
                 child: Column(
                   children: [
                     const SizedBox(height: 10),
@@ -102,7 +87,7 @@ class JobDetailScreen extends StatelessWidget {
                               )),
                           const SizedBox(height: 10),
                           Text(responsibilty,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 15,
                                   //fontWeight: FontWeight.w500,
                                   letterSpacing: 0.5,
@@ -115,8 +100,7 @@ class JobDetailScreen extends StatelessWidget {
                       children: [
                         AppFeature(
                           title: 'Earn Skill Badge',
-                          subTitle:
-                              'Skills assessments help you to stand Out to recruiters',
+                          subTitle: 'Skills assessments help you to stand Out to recruiters',
                           color: kYellowColor,
                           height: size.height / 4,
                           component: const IconBox(
@@ -130,8 +114,7 @@ class JobDetailScreen extends StatelessWidget {
                         ),
                         AppFeature(
                           title: 'Similar Job Alert',
-                          subTitle:
-                              'Product Designer | Typrography | Google LLC',
+                          subTitle: 'Product Designer | Typrography | Google LLC',
                           color: kPurpleColor,
                           height: 110,
                           margin: const EdgeInsets.only(top: 100),
