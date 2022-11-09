@@ -1,5 +1,4 @@
 import 'package:easy_jobs/constants.dart';
-import 'package:easy_jobs/screens/screens.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_jobs/utils.dart';
@@ -187,7 +186,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                                       setState(() {
                                         isLoading = false;
                                       });
-                                      Navigator.push(context, MaterialPageRoute(builder: ((context) => const HomeScreen())));
+                                      Navigator.pushReplacementNamed(context, '/login');
                                     });
                                   });
                                 }
@@ -216,11 +215,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ));
+                      Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: const Text(
                       "Already have an account? Sign in",
